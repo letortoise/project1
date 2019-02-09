@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="mb-2">Book Information</h1>
+    <div class="container mb-4">
+        <h5>Title: {{ book.title }}</h5>
+        <h5>Author: {{ book.author }}</h5>
+        <h5>Year: {{ book.year }}</h5>
+        <h5>ISBN: {{ book.isbn }}</h5>
+    </div>
+
+    <h1 class="mb-2">Goodreads Information</h1>
+    <div class="container mb-4">
+        <h5>Number of Reviews: {{ goodreads.ratings_count }}</h5>
+        <h5>Average Rating: {{ goodreads.average_rating }}</h5>
+    </div>
+
+
+    <h1 class="mb-2">Reviews</h1>
+    <div class="container mb-4">
+        {% if reviews %}
+            {% for review in reviews %}
+                <li>
+                    <b>{{ review.username }}</b> says: {{ review.rating }} star, "{{ review.review }}"
+                </li>
+            {% endfor %}
+            {% else %}
+                <h5>There are no reviews yet.</h5>
+        {% endif %}
+    </div>
+
+
+    <h1 class="mb-3">Leave a Reveiw</h1>
+    <form action="{{ url_for('review', book_id = book.id) }}" method="post">
+        <h4>Rating</h4>
+        <div class="form-group">
+            <select class="form-control" name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <h4>Opinion</h4>
+        <div class="form-group">
+            <input class="form-control" name="review">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Go!</button>
+        </div>
+    </form>
+{% endblock %}

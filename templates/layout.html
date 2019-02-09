@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-primary mb-5">
+            <span class="navbar-brand mb-0 h1">Project 1</span>
+            <a class="btn btn-secondary" href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+
+    <div class="container col-md-6">
+
+        <h1 class="mb-5"> Search for a book </h1>
+
+
+        <form action="{{ url_for('search', search_by="title") }}" method="post">
+            <h4>Search by Title</h4>
+            <div class="form-group" style="width:100%">
+                <input class="form-control" name="title" placeholder="Title">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary">Go!</button>
+            </div>
+        </form>
+
+        <form action="{{ url_for('search', search_by="author") }}" method="post">
+            <div class="form-group">
+                <h4>Search by Author</h4>
+                <input class="form-control" name="author" placeholder="Author">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary">Go!</button>
+            </div>
+        </form>
+
+        <form action="{{ url_for('search', search_by="isbn") }}" method="post">
+            <div class="form-group">
+                <h4>Search by ISBN</h4>
+                <input class="form-control" name="isbn" placeholder="ISBN">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary">Go!</button>
+            </div>
+        </form>
+
+    </div>
+
+
+{% endblock %}
